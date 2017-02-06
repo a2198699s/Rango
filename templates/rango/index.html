@@ -2,17 +2,28 @@
 {% load staticfiles %} 
 <html>
 <head>
-<title>Rango</title>
+	<title>Rango</title>
 </head>
+
 <body>
-<h1>Rango says...</h1>
-<div>
-REPILES DESERVE EQUAL RIGHTS <br />
-<strong>{{ boldmessage }}</strong><br />
-</div>
-<div>
-<a href="/rango/about/">About</a><br />
-<img src="{% static "images/rango.jpg" %}"alt="Laidback coder" /> 
-</div>
+	<h1>Rango says...</h1>
+	<div> REPILES DESERVE EQUAL RIGHTS </div>
+
+	<div>
+	{% if categories %}
+	<ul>
+		{% for category in categories %}
+			<li>{{ category.name }}</li>
+		{% endfor %}
+	</ul>
+	{% else %}
+		<strong>There are no categories present.</strong>
+	{% endif %}
+	</div>
+	
+	<div>
+		<a href="/rango/about/">About</a><br />
+		<img src="{% static "images/rango.jpg" %}"alt="Laidback coder" /> 
+	</div>
 </body>
 </html>
