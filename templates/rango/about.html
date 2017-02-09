@@ -1,15 +1,27 @@
-<!DOCTYPE html>
-{% load staticfiles %} 
-<html>
-<head>
-<title>About</title>
-</head>
-<body>
-<h1>This tutorial was put together by Andrew Smith (2198699s)</h1>
-<div>
-<a href="/rango/">Home</a><br />
-<img src="{% static "train.jpg" %}"alt="Ewan McGregor being a sexy beast"/>
+{% extends 'rango/base.html' %}
+	{% load staticfiles %}
+	{% block title_block %}
+		About
+	{% endblock %}
+	
+	{% block body_block %}
+        <div>
+	        <h1>About Page</h1>			
+	        This tutorial has been put together by: Andrew Smith (2198699s)
+		</div>	
+		<p>
+		<img src="{% static "train.jpg" %}"alt="Ewan McGregor being a sexy beast"/>
+		<img src="{{MEDIA_URL}}cat.jpg" alt="Cat image">
+		</p>
+	
+	<p>
+		<a href="/rango/">Home</a><br />
+	</p>
+	<hr>
 
-</div>
-</body>
-</html>
+		
+	{% endblock %}
+
+
+
+
