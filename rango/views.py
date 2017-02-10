@@ -14,6 +14,7 @@ from django.contrib.auth import logout
 
 
 def index(request):
+	request.session.set_test_cookie()
 	#context_dict = {'boldmessage': "Andy waz ere"}
 	category_list = Category.objects.order_by("-likes")[:5]
 	page_list = Page.objects.order_by('-views')[:5]
@@ -21,6 +22,10 @@ def index(request):
 	return render(request, 'rango/index.html', context=context_dict)
 	
 def about(request):
+	if request.session.test_cookie_worked():
+		print("TEST COOKIE WORKED!")
+		request.session.delete_test_cookie()
+
 	print (request.method)
 	print (request.user)
 	return render(request, 'rango/about.html',{})
